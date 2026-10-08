@@ -1,6 +1,6 @@
-# Fuyad Islam — Portfolio
+# Fuyad Islam — 3D Portfolio
 
-A single-page, scroll-driven 3D portfolio built with plain HTML, CSS and JavaScript, using [Three.js](https://threejs.org/) for the 3D scene.
+A single-page, scroll-driven 3D portfolio built with HTML, CSS, and vanilla JavaScript, using [Three.js](https://threejs.org/) and GLTFLoader for the interactive 3D scene. The experience combines responsive design, smooth scroll-driven camera movement, animations, and an embedded 3D model to showcase my background, projects, skills, and contact details.
 
 **Live site:** https://YOUR-PROJECT.vercel.app
 
@@ -10,33 +10,53 @@ I'm a Digital Forensics & Cybersecurity student (BSc Computing) at TU Dublin, ba
 
 ## What's on the page
 
-- A short intro about me
-- Selected projects, linked to their GitHub repos
-- Certifications and badges
-- Links to GitHub and LinkedIn
+- A short introduction and personal profile
+- Education and experience timeline
+- Selected cybersecurity, forensics, AI, networking, and software projects
+- Certifications and skills
+- GitHub, LinkedIn, and contact links
+- Interactive 3D scene with scroll-driven camera movement
 
-## Tech
+## Tech stack
 
-- HTML, CSS, vanilla JavaScript
-- Three.js (r128) and GLTFLoader, loaded from a CDN
-- Google Fonts (Gaegu, Cormorant Garamond)
-- Hosted on Vercel
+- **HTML5** — page structure and content
+- **CSS3** — responsive layout, typography, effects, and animations
+- **Vanilla JavaScript** — interactions, scroll logic, animation, and Three.js scene control
+- **Three.js r128** — real-time 3D rendering
+- **GLTFLoader** — loading the `.glb` 3D model
+- **Google Fonts** — Gaegu and Cormorant Garamond
+
+## Project structure
+
+```text
+fuyad-portfolio/
+├── index.html      # Page structure and content
+├── style.css       # All custom styling and responsive rules
+├── script.js       # Three.js scene and portfolio interactions
+├── scene.glb       # 3D model used by the scene
+├── README.md
+└── .gitignore
+```
+
+The project intentionally has no build step or framework. HTML, CSS, and JavaScript are kept in separate files so the repository remains easy to understand and maintain.
 
 ## Run locally
 
-No build step or dependencies. Clone the repo and open `index.html` in a browser:
+No npm install or build process is required. Clone the repository and serve the folder with a local web server:
 
 ```bash
 git clone https://github.com/fuyadislam/portfolio.git
 cd portfolio
-open index.html   # macOS; on Windows use: start index.html
+python3 -m http.server 8000
 ```
 
-An internet connection is needed because Three.js and the fonts load from CDNs.
+Then open `http://localhost:8000` in your browser.
+
+A local web server is recommended because the 3D model is loaded as a `.glb` asset. An internet connection is also needed for Three.js and the Google Fonts loaded from CDNs.
 
 ## Deploy
 
-Every push to `main` redeploys automatically on Vercel. There is no build command, and the output directory is the repo root.
+The project can be deployed directly to Vercel, GitHub Pages, Netlify, or any static hosting service. There is no build command; the repository root is the site root.
 
 ## Contact
 
