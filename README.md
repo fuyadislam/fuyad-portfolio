@@ -2,7 +2,7 @@
 
 An interactive 3D scroll portfolio: a terminal-style intro, a starfield, and a 3D avatar that follows your cursor as you scroll through my résumé, projects and certifications.
 
-**Live site:** https://YOUR-PROJECT.vercel.app
+**Live site:** https://fuyadislam.github.io/portfolio/
 
 ## About me
 
@@ -47,7 +47,7 @@ Then visit http://localhost:8000. An internet connection is needed because Three
 
 ## Deploy
 
-Every push to `main` redeploys automatically on Vercel. There is no build step: the framework preset is "Other" and the output directory is the repo root.
+For GitHub Pages, open repository Settings → Pages, choose “Deploy from a branch”, select `main` and `/(root)`, then save. There is no build step.
 
 ## Contact
 
