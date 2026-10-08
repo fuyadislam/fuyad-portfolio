@@ -108,7 +108,7 @@ function tune(m){
 }
 
 var model,eL,eR;
-fetch('assets/avatar.glb').then(function(r){return r.arrayBuffer();}).then(function(bin){new THREE.GLTFLoader().parse(bin,'',function(g){model=g.scene;tune(model);S.add(model);eL=model.getObjectByName('eyeL');eR=model.getObjectByName('eyeR');},function(e){console.error(e);});}).catch(function(e){console.error(e);});
+fetch('./avatar.glb').then(function(r){return r.arrayBuffer();}).then(function(bin){new THREE.GLTFLoader().parse(bin,'',function(g){model=g.scene;tune(model);S.add(model);eL=model.getObjectByName('eyeL');eR=model.getObjectByName('eyeR');},function(e){console.error(e);});}).catch(function(e){console.error(e);});
 /* camera keyframes: azimuth, elevation, distance, head screen offset, look height */
 var K=[[0,.05,4.6,0,.05],[-.8,-.3,2.7,1,.5],[.5,.7,3,1.1,.55],[1.2,.05,2.8,1,.5],[.6,-.55,3.2,-1.1,.5],[6.283,.1,3.7,1.1,.5],[-2.2,.25,3,1,.5]];
 var cur=K[0].slice(),mx=0,my=0,ex=0,ey=0;
