@@ -2,8 +2,7 @@
 
 A single-page, scroll-driven 3D portfolio built with HTML, CSS, and vanilla JavaScript, using [Three.js](https://threejs.org/) and GLTFLoader for the interactive 3D scene. The experience combines responsive design, smooth scroll-driven camera movement, animations, and an embedded 3D model to showcase my background, projects, skills, and contact details.
 
-**Live site:** About Fuyad
-fuyad-portfolio-pink.vercel.app
+**Live site:** https://fuyad-portfolio-3cc5n1gry-j-d421.vercel.app/
 
 ## About me
 
