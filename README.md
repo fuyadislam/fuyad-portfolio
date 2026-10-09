@@ -46,7 +46,7 @@ Open the repo, go to **Settings, Pages**, set the source to **Deploy from a bran
 
 ## Run locally
 
-Double-click `index.html`, or run `python3 -m http.server 8000` and open http://localhost:8000. An internet connection is needed because Three.js and the fonts load from CDNs.
+Double-click `index.html`, or run `python3 -m http.server 8000`.An internet connection is needed because Three.js and the fonts load from CDNs.
 
 ## Tech
 
