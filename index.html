@@ -3,72 +3,67 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HKM Fuyad Islam</title>
-<link rel="stylesheet" href="./style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=JetBrains+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap">
+<title>HKM Fuyad Islam | Cyber Quest</title>
+<meta name="description" content="HKM Fuyad Islam, Digital Forensics and Cybersecurity student at TU Dublin who builds with AI, machine learning and software. A pixel adventure portfolio.">
+<meta name="theme-color" content="#2c001e">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
-<script>document.documentElement.className='js'</script>
+<link rel="stylesheet" href="css/desktop.css">
 </head>
-<body class="lock">
-<canvas id="pc" aria-hidden="true"></canvas>
-<div id="boot"><div class="term"><div class="bar"><i></i><i></i><i></i><span>fuyad@portfolio: ~</span></div><div class="bd"><span id="bt"></span><span class="cur"></span><button id="st" type="button">START</button></div></div></div>
-<div id="fl"></div>
-<div class="ph" id="ph">move: scatter · hold: attract <button id="gb" type="button">drop letters (G)</button></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="gh" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol><symbol id="li" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol><symbol id="ml" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 7.5l8.5 6 8.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol></svg>
-<canvas id="sf" aria-hidden="true"></canvas><canvas id="gl" aria-hidden="true"></canvas>
-<div class="vig"></div><div class="grain"></div><div class="frame"></div>
-<header class="top"><div><strong>HKM Fuyad Islam</strong><span class="sp">Digital Forensics &amp; Cybersecurity</span></div>
-<div class="tr"><span class="sp">Portfolio — 2026</span><a href="https://github.com/fuyadislam" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ic"><use href="#gh"/></svg></a><a href="https://www.linkedin.com/in/fuyadislam" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic"><use href="#li"/></svg></a></div></header>
-<div class="side sp">Based in Dublin</div><div class="foot sp">Secure · Analyse · Build</div>
+<body>
+<div id="pw"><pre id="pwt"></pre><p id="pwh">PRESS ANY KEY OR CLICK TO POWER ON</p></div>
+<canvas id="room" class="off"></canvas><div id="rh" hidden></div>
+<div id="term" class="bg" hidden><div class="tb"><i></i><i></i><i></i><span>fuyad@ubuntu: ~</span></div><div class="tbd"><pre id="tt"></pre></div></div>
+<div id="wipe"></div>
 
-<section id="hero" data-k="0"><div class="t rv"><h1>HKM FUYAD ISLAM</h1>
-<p>I'm Fuyad, a Digital Forensics &amp; Cybersecurity student at TU Dublin. I'm into AI, machine learning and software development, and I like pairing them with security: packet analysers, AI agents that attack and defend, and models that predict Formula 1 races.</p>
-<div class="hint sp">Scroll<i></i></div></div></section>
+<main id="desk" hidden>
+  <canvas id="wall"></canvas>
+  <div id="top"><span><b>Activities</b></span><span id="clk">Fri 9 Oct 09:41</span><span><button id="zo" type="button">&#10530; ZOOM OUT</button> <button id="mute" type="button">SOUND: ON</button></span></div>
+  <nav id="dock" aria-label="Sections">
+    <button data-go="about" data-t="About me" style="--c:#e95420">ME</button>
+    <button data-go="projects" data-t="Projects" style="--c:#3465a4">&lt;/&gt;</button>
+    <button data-go="skills" data-t="Skills" style="--c:#4e9a06">SK</button>
+    <button data-go="badges" data-t="Badges" style="--c:#c4a000">&#9733;</button>
+    <button data-go="contact" data-t="Contact" style="--c:#75507b">@</button>
+    <button data-go="room" data-t="Go out to the room" style="--c:#06989a" class="rm">3D</button>
+  </nav>
+  <div class="con">
+    <div class="wtb"><i></i><i></i><i></i><span>Cyber Quest &mdash; fuyad@ubuntu</span></div>
+    <div class="bez"><div class="screen" id="scr"><canvas id="cv" width="320" height="192"></canvas><div id="ov"></div></div></div>
+    <div class="ctrl">
+      <div class="dp">
+        <button class="up" data-k="up" aria-label="Up">&#9650;</button>
+        <button class="left" data-k="left" aria-label="Left">&#9664;</button>
+        <span class="mid"></span>
+        <button class="right" data-k="right" aria-label="Right">&#9654;</button>
+        <button class="down" data-k="down" aria-label="Down">&#9660;</button>
+      </div>
+      <div class="mid2"><button data-k="start">START</button><button data-k="b">BACK</button></div>
+      <div class="ab"><button data-k="b" aria-label="B button">B</button><button data-k="a" aria-label="A button">A</button></div>
+    </div>
+  </div>
+  <p class="hint">Arrow keys and Enter to play, Esc to go back. Or use the buttons.</p>
+</main>
 
-<section class="r" data-k="1"><div class="rs rv"><h2 class="serif">Résumé</h2>
-<ul class="tl">
-<li><span class="sp">2022 – 2024</span><b><i class="lg">DT</i>IGCSE &amp; A-Levels</b><em>Dhanmondi Tutorial, Bangladesh</em></li>
-<li><span class="sp">Jun – Dec 2024</span><b><i class="lg">MS</i>Science &amp; Maths Teacher</b><em>Mangrove School, Bangladesh</em><p>Taught Grade 7 science and maths</p><p>Made learning fun and easy to follow with virtual tools and online lessons</p></li>
-<li><span class="sp">2025 – 2029</span><b><i class="lg">TU</i>BSc (Hons) Computing</b><em>Digital Forensics &amp; Cybersecurity · TU Dublin</em><p>Learning how evidence is found, how attacks work and how to stop them</p><p>Turning coursework into real projects in AI, networking and software</p></li>
-<li><span class="sp">Sep 2026 – Now</span><b><i class="lg">PM</i>Peer Mentor</b><em>TU Dublin</em></li>
-</ul></div></section>
-
-<section class="r" data-k="2"><div class="rs rv"><span class="sp">Works · 01</span><h2 class="serif">Security &amp; Forensics</h2>
-<ul class="tl">
-<li><span class="sp">Python · Scapy</span><b>Packet Logger</b><em>Capture, export, investigate</em><p>Captures live traffic or reads pcap files, inspected with Wireshark</p><p>Supports IP, TCP, UDP and DNS, exporting JSON, CSV and pcap</p><a class="circ" href="https://github.com/fuyadislam/Packet-Logger" target="_blank" rel="noopener" aria-label="GitHub repo"><svg class="ic"><use href="#gh"/></svg></a></li>
-<li><span class="sp">Anomaly detection</span><b>Network Traffic Analysis</b><em>A detective for packets</em><p>Reads JSON and JSONL datasets of timestamps, IP addresses and protocols</p><p>Builds structured reports and flags irregular network behaviour</p><a class="circ" href="https://github.com/fuyadislam/Network-Traffic-Analysis-Anomaly-Detection" target="_blank" rel="noopener" aria-label="GitHub repo"><svg class="ic"><use href="#gh"/></svg></a></li>
-</ul><div class="chips"><span>Wireshark</span><span>Scapy</span><span>Nmap</span><span>Burp Suite</span><span>Linux</span><span>Packet capture</span></div></div></section>
-
-<section class="r" data-k="3"><div class="rs rv"><span class="sp">Works · 02</span><h2 class="serif">AI, ML &amp; Software</h2>
-<ul class="tl">
-<li><span class="sp">LangGraph · Groq · Streamlit</span><b>Attack-Defense Agent</b><em>Two AI agents, one loop</em><p>An attacker agent writes a step-by-step plan: recon, exploitation, privilege escalation, data exfiltration</p><p>A defender agent answers every stage with concrete countermeasures</p><p>Built with LangGraph, Groq and Llama 3.3 70B</p><a class="circ" href="https://github.com/tausif112/attack-defense-agent" target="_blank" rel="noopener" aria-label="GitHub repo"><svg class="ic"><use href="#gh"/></svg></a></li>
-<li><span class="sp">Data · ML</span><b>Formula 1 Race Prediction</b><em>Racing meets data</em><p>Simulates race results from practice sessions, qualifying, track conditions and weather</p><a class="circ" href="https://github.com/fuyadislam/formula_1_prediction" target="_blank" rel="noopener" aria-label="GitHub repo"><svg class="ic"><use href="#gh"/></svg></a></li>
-</ul><div class="chips"><span>Python</span><span>Machine learning</span><span>Generative AI</span><span>LangGraph</span><span>Groq</span><span>Streamlit</span><span>Software development</span></div></div></section>
-
-<section class="r" data-k="6"><div class="rs rv"><h2 class="serif">Certifications</h2>
-<ul class="tl">
-<li><span class="sp">Jun 2026</span><b><i class="lg">M</i>Mastercard Cybersecurity Job Simulation</b><em>Forage</em><p>Completed a cybersecurity job simulation</p><p><a href="https://www.theforage.com/completion-certificates/mfxGwGDp6WkQmtmTf/vcKAB5yYAgvemepGQ_mfxGwGDp6WkQmtmTf_6a4115c5dc925520a54be178_1782651743432_completion_certificate.pdf" target="_blank" rel="noopener" style="color:var(--sun)">Verify credential</a></p></li>
-<li><span class="sp">Oct 2025</span><b><i class="lg">G</i>Technical Support Fundamentals</b><em>Google</em><p>Core IT support and troubleshooting foundations</p><p><a href="https://www.coursera.org/account/accomplishments/verify/J24IAOOHIS00" target="_blank" rel="noopener" style="color:var(--sun)">Verify credential</a></p></li>
-<li><span class="sp">Nov 2024</span><b><i class="lg">G</i>Introduction to Generative AI</b><em>Google</em><p>Generative AI concepts and how the models work</p><p><a href="https://www.cloudskillsboost.google/public_profiles/6996d883-ce97-4166-916f-bb2d18649375/badges/12768254" target="_blank" rel="noopener" style="color:var(--sun)">Verify credential</a></p></li>
-</ul></div></section>
-
-<section id="skills" data-k="4"><div class="t rv"><h2 class="serif">What I bring</h2>
-<p>I build in Python, ship small tools with Streamlit and keep everything tidy in Git. I care about readable code, and about understanding a system well enough to defend it.</p>
-<p>I'm drawn to security operations, digital forensics and threat detection, and I like pairing them with AI, machine learning and software development, so the tools I build are both smart and easy to use.</p>
-<div class="chips"><span>Python</span><span>Linux</span><span>Wireshark</span><span>Scapy</span><span>Nmap</span><span>Burp Suite</span><span>Network analysis</span><span>Digital forensics</span><span>Data analysis</span><span>LangGraph</span><span>Generative AI</span><span>Machine learning</span><span>Software development</span><span>Git</span></div></div></section>
-
-<section id="contact" class="r" data-k="5"><div class="t rv"><h2 class="serif">Say hi</h2>
-<p>If you have a problem involving packets, logs or models, or just want to talk about security, AI or Formula 1, I'd love to hear from you. I'm based in Dublin.</p>
-<a href="mailto:fuyadislam1@gmail.com"><svg class="ic"><use href="#ml"/></svg>fuyadislam1@gmail.com</a>
-<a href="https://github.com/fuyadislam" target="_blank" rel="noopener"><svg class="ic"><use href="#gh"/></svg>github.com/fuyadislam</a>
-<a href="https://www.linkedin.com/in/fuyadislam" target="_blank" rel="noopener"><svg class="ic"><use href="#li"/></svg>linkedin.com/in/fuyadislam</a></div></section>
+<section class="sr">
+  <h1>HKM Fuyad Islam</h1>
+  <p>Digital Forensics and Cybersecurity student at TU Dublin (2025 to 2029), based in Dublin, Ireland. Interested in AI, machine learning and software development.</p>
+  <ul>
+    <li><a href="https://github.com/tausif112/attack-defense-agent">Attack-Defense Agent</a>: two AI agents, one plans an attack and one writes the defense.</li>
+    <li><a href="https://github.com/fuyadislam/Packet-Logger">Packet Logger</a>: captures live or pcap traffic and exports JSON, CSV and pcap.</li>
+    <li><a href="https://github.com/fuyadislam/Network-Traffic-Analysis-Anomaly-Detection">Network Traffic Analysis and Anomaly Detection</a></li>
+    <li><a href="https://github.com/fuyadislam/formula_1_prediction">Formula 1 Race Prediction</a></li>
+  </ul>
+  <p><a href="mailto:fuyadislam1@gmail.com">Email</a>, <a href="https://github.com/fuyadislam">GitHub</a>, <a href="https://www.linkedin.com/in/fuyadislam">LinkedIn</a></p>
+</section>
+<noscript><p style="color:#fff;padding:24px">This portfolio is a small game and needs JavaScript. Email: fuyadislam1@gmail.com</p></noscript>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-
-<script src="./avatar.js"></script>
-<script src="./intro.js"></script>
-<script src="./starfield.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/room.js"></script>
+<script src="js/wall.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

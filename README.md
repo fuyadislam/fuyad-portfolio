@@ -1,55 +1,53 @@
-# Fuyad Islam — Portfolio
+# HKM Fuyad Islam: Cyber Quest
 
-An interactive 3D scroll portfolio: a terminal-style intro, a starfield, and a 3D avatar that follows your cursor as you scroll through my résumé, projects and certifications.
+A portfolio you play. A realistic 3D room that follows your real time (the clocks show your local time and the window shows day, dusk or night) with a MacBook, a second monitor, a lamp and more on a wooden desk. The camera flies in until the MacBook screen fills the view, the coding starts, and a Linux desktop opens with a small 16-bit adventure. Walk to a building and press A:
 
-**Live site:** https://fuyadislam.github.io/portfolio/
+| Building | What is inside |
+| --- | --- |
+| HOME | Trainer card and quest log |
+| DEX | Projects |
+| DOJO | Skills |
+| GYM | Certificates |
+| POST | Email, GitHub and LinkedIn |
 
-## About me
+The dock on the left jumps straight to any section. **ZOOM OUT** takes you back to the room, where you can switch the lamp on and off (click it or press **L**), play the mini synth (click the keys or press **A S D F G H J K**), sip the coffee, ring the phone and more. Click the MacBook or press Enter to sit back down.
 
-I'm a Digital Forensics & Cybersecurity student (BSc Computing) at TU Dublin, based in Dublin. I'm interested in security operations, digital forensics, threat detection and AI/ML, and I'm looking for a cybersecurity internship.
+**Controls:** arrow keys or WASD to move, Enter, Space or Z for A, Esc, Backspace or X for B. On touch screens use the on-screen buttons.
 
-## Project structure
+## How this repo is organised
 
 ```
 .
-├── index.html          # page markup and content
-├── css/
-│   └── style.css       # layout, theme, animations
-├── js/
-│   ├── avatar.js       # Three.js scene, avatar face and scroll camera
-│   ├── intro.js        # terminal boot sequence and title particles
-│   └── starfield.js    # background starfield and planets
-├── assets/
-│   └── avatar.glb      # 3D avatar model
-├── README.md
-└── .gitignore
+├── index.html        # the finished site, one self-contained file (this is what gets hosted)
+├── src/              # the readable source: HTML, CSS, JavaScript and the avatar image
+│   ├── index.html
+│   ├── css/          # style.css, desktop.css
+│   ├── js/           # audio, terminal, room (3D), wall, game, main
+│   └── assets/avatar.png
+├── build.js          # optional: rebuilds index.html from src/ (node build.js)
+├── vercel.json
+├── .nojekyll
+├── .gitattributes
+├── .gitignore
+└── README.md
 ```
 
-## Tech
+`index.html` in the root already contains all the CSS, JavaScript and the image, so it works even if nothing else is uploaded. Edit the files in `src/`, run `node build.js`, and commit the new `index.html`.
 
-- HTML, CSS, vanilla JavaScript
-- [Three.js](https://threejs.org/) r128 with GLTFLoader (loaded from a CDN)
-- Canvas 2D for the starfield and particle title
-- Custom shader tweak for the avatar's drawn nose and mouth
-- Hosted on Vercel
+## Deploy on Vercel
+
+1. Push this repo to GitHub.
+2. On vercel.com choose **Add New, Project** and import the repo.
+3. Leave **Framework Preset** as **Other**, and leave Build Command and Output Directory empty. Click **Deploy**.
+
+## Deploy on GitHub Pages
+
+Open the repo, go to **Settings, Pages**, set the source to **Deploy from a branch**, pick `main` and `/ (root)`, and save.
 
 ## Run locally
 
-The avatar model loads with `fetch`, so open the site through a local server instead of double-clicking `index.html`:
+Double-click `index.html`, or run `python3 -m http.server 8000` and open http://localhost:8000. An internet connection is needed because Three.js and the fonts load from CDNs.
 
-```bash
-git clone https://github.com/fuyadislam/portfolio.git
-cd portfolio
-python3 -m http.server 8000
-```
+## Tech
 
-Then visit http://localhost:8000. An internet connection is needed because Three.js and the fonts load from CDNs.
-
-## Deploy
-
-For GitHub Pages, open repository Settings → Pages, choose “Deploy from a branch”, select `main` and `/(root)`, then save. There is no build step.
-
-## Contact
-
-- LinkedIn: https://www.linkedin.com/in/fuyadislam
-- GitHub: https://github.com/fuyadislam
+Plain HTML, CSS and JavaScript. [Three.js](https://threejs.org/) r128 for the 3D room, Canvas 2D for the pixel world, Web Audio for all sounds (no audio files). Fonts: Press Start 2P and Ubuntu Mono from Google Fonts.
