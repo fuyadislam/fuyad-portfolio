@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HKM Fuyad Islam | Cyber Quest</title>
+<meta name="description" content="HKM Fuyad Islam, Digital Forensics and Cybersecurity student at TU Dublin who builds with AI, machine learning and software. A pixel adventure portfolio.">
+<meta name="theme-color" content="#2c001e">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu+Mono:wght@400;700&display=swap">
+<style>/* safety net: if the main stylesheet ever fails to load, the page stays dark and the plain-text fallback stays hidden */html,body{margin:0;height:100%;background:#2c001e;color:#eee;font-family:ui-monospace,Menlo,Consolas,monospace}.sr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}#pw{position:fixed;inset:0;display:grid;place-items:center;text-align:center;cursor:pointer}</style>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/desktop.css">
+</head>
+<body>
+<div id="pw"><pre id="pwt"></pre><p id="pwh">PRESS ANY KEY OR CLICK TO POWER ON</p></div>
+<canvas id="room" class="off"></canvas><div id="rh" hidden></div>
+<div id="term" class="bg" hidden><div class="tb"><i></i><i></i><i></i><span>fuyad@ubuntu: ~</span></div><div class="tbd"><pre id="tt"></pre></div></div>
+<div id="wipe"></div>
+
+<main id="desk" hidden>
+  <canvas id="wall"></canvas>
+  <div id="top"><span><b>Activities</b></span><span id="clk">Fri 9 Oct 09:41</span><span><button id="zo" type="button">&#10530; ZOOM OUT</button> <button id="mute" type="button">SOUND: ON</button></span></div>
+  <nav id="dock" aria-label="Sections">
+    <button data-go="about" data-t="About me" style="--c:#e95420">ME</button>
+    <button data-go="projects" data-t="Projects" style="--c:#3465a4">&lt;/&gt;</button>
+    <button data-go="skills" data-t="Skills" style="--c:#4e9a06">SK</button>
+    <button data-go="badges" data-t="Badges" style="--c:#c4a000">&#9733;</button>
+    <button data-go="contact" data-t="Contact" style="--c:#75507b">@</button>
+    <button data-go="room" data-t="Go out to the room" style="--c:#06989a" class="rm">3D</button>
+  </nav>
+  <div class="con">
+    <div class="wtb"><i></i><i></i><i></i><span>Cyber Quest &mdash; fuyad@ubuntu</span></div>
+    <div class="bez"><div class="screen" id="scr"><canvas id="cv" width="320" height="192"></canvas><div id="ov"></div></div></div>
+    <div class="ctrl">
+      <div class="dp">
+        <button class="up" data-k="up" aria-label="Up">&#9650;</button>
+        <button class="left" data-k="left" aria-label="Left">&#9664;</button>
+        <span class="mid"></span>
+        <button class="right" data-k="right" aria-label="Right">&#9654;</button>
+        <button class="down" data-k="down" aria-label="Down">&#9660;</button>
+      </div>
+      <div class="mid2"><button data-k="start">START</button><button data-k="b">BACK</button></div>
+      <div class="ab"><button data-k="b" aria-label="B button">B</button><button data-k="a" aria-label="A button">A</button></div>
+    </div>
+  </div>
+  <p class="hint">Arrow keys and Enter to play, Esc to go back. Or use the buttons.</p>
+</main>
+
+<section class="sr">
+  <h1>HKM Fuyad Islam</h1>
+  <p>Digital Forensics and Cybersecurity student at TU Dublin (2025 to 2029), based in Dublin, Ireland. Interested in AI, machine learning and software development.</p>
+  <ul>
+    <li><a href="https://github.com/tausif112/attack-defense-agent">Attack-Defense Agent</a>: two AI agents, one plans an attack and one writes the defense.</li>
+    <li><a href="https://github.com/fuyadislam/Packet-Logger">Packet Logger</a>: captures live or pcap traffic and exports JSON, CSV and pcap.</li>
+    <li><a href="https://github.com/fuyadislam/Network-Traffic-Analysis-Anomaly-Detection">Network Traffic Analysis and Anomaly Detection</a></li>
+    <li><a href="https://github.com/fuyadislam/formula_1_prediction">Formula 1 Race Prediction</a></li>
+  </ul>
+  <p><a href="mailto:fuyadislam1@gmail.com">Email</a>, <a href="https://github.com/fuyadislam">GitHub</a>, <a href="https://www.linkedin.com/in/fuyadislam">LinkedIn</a></p>
+</section>
+<noscript><p style="color:#fff;padding:24px">This portfolio is a small game and needs JavaScript. Email: fuyadislam1@gmail.com</p></noscript>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/room.js"></script>
+<script src="js/wall.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

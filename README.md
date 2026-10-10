@@ -21,12 +21,12 @@ Works on phones and tablets in portrait and landscape: the camera adapts to the 
 ```
 .
 ├── index.html        # the finished site, one self-contained file (this is what gets hosted)
-├── src/              # the readable source: HTML, CSS, JavaScript and the avatar image
-│   ├── index.html
+├── source/           # the readable source files (not used by the website itself)
+│   ├── page.html
 │   ├── css/          # style.css, desktop.css
 │   ├── js/           # audio, terminal, room (3D), wall, game, main
 │   └── assets/avatar.png
-├── build.js          # optional: rebuilds index.html from src/ (node build.js)
+├── build.js          # optional: rebuilds index.html from source/ (node build.js)
 ├── vercel.json
 ├── .nojekyll
 ├── .gitattributes
@@ -34,7 +34,7 @@ Works on phones and tablets in portrait and landscape: the camera adapts to the 
 └── README.md
 ```
 
-`index.html` in the root already contains all the CSS, JavaScript and the image, so it works even if nothing else is uploaded. Edit the files in `src/`, run `node build.js`, and commit the new `index.html`.
+The only page the website uses is `index.html` in the root. It already contains all the CSS, JavaScript and the image, so it works even if nothing else is uploaded. Edit the files in `source/`, run `node build.js`, and commit the new `index.html`.
 
 ## Deploy on Vercel
 
