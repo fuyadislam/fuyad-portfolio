@@ -12,6 +12,8 @@ A portfolio you play. A realistic 3D room that follows your real time (the clock
 
 The dock on the left jumps straight to any section. **ZOOM OUT** takes you back to the room, where you can switch the lamp on and off (click it or press **L**), play the mini synth (click the keys or press **A S D F G H J K**), sip the coffee, ring the phone and more. Click the MacBook or press Enter to sit back down.
 
+Works on phones and tablets in portrait and landscape: the camera adapts to the screen shape, the dock moves to the bottom in portrait, and the touch controls move to the sides in landscape. All sounds are soft, synthesised on the fly, and can be muted with the SOUND button.
+
 **Controls:** arrow keys or WASD to move, Enter, Space or Z for A, Esc, Backspace or X for B. On touch screens use the on-screen buttons.
 
 ## How this repo is organised
@@ -46,7 +48,7 @@ Open the repo, go to **Settings, Pages**, set the source to **Deploy from a bran
 
 ## Run locally
 
-Double-click `index.html`, or run `python3 -m http.server 8000`.An internet connection is needed because Three.js and the fonts load from CDNs.
+Double-click `index.html`, or run `python3 -m http.server 8000` and open http://localhost:8000. An internet connection is needed because Three.js and the fonts load from CDNs.
 
 ## Tech
 

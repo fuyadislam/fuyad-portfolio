@@ -12,8 +12,15 @@
   var cv2 = document.createElement('canvas'), sx = cv2.getContext('2d'); cv2.width = 2048; cv2.height = 1270;
   var COL = { u: '#8ae234', p: '#729fcf', d: '#888a85', ok: '#8ae234', wn: '#fce94f' };
   var V = function (a) { return new THREE.Vector3(a[0], a[1], a[2]); };
-  var PC = new THREE.CatmullRomCurve3([[2.7, 1.6, 2.6], [1.5, 1.5, 1.7], [.5, 1.42, .8], [0, 1.381, .232]].map(V));
-  var LC = new THREE.CatmullRomCurve3([[0, .95, -.2], [0, 1.05, -.35], [0, 1.15, -.44], [0, 1.196, -.464]].map(V));
+  var PC, LC, ASP = 1.78, portrait = false;
+  /* camera path: on tall phone screens it sits further back and uses a wider lens so the MacBook is never cut off */
+  function curves() {
+    var fb = portrait ? 58 : 40, tn = Math.tan((fb + 8) * Math.PI / 360), d = Math.max(.72, .31 / tn, .46 * .94 / (tn * ASP));
+    var fin = [0, 1.196 + .2571 * d, -.464 + .9664 * d];
+    PC = new THREE.CatmullRomCurve3((portrait ? [[2.6, 2.3, 5.4], [1.4, 2.0, 4.0], [.5, 1.85, 2.6], fin] : [[2.7, 1.6, 2.6], [1.5, 1.5, 1.7], [.5, 1.42, .8], fin]).map(V));
+    LC = new THREE.CatmullRomCurve3([[0, .95, -.2], [0, 1.05, -.35], [0, 1.15, -.44], [0, 1.196, -.464]].map(V));
+  }
+  curves();
   function tex(w, h, fn) { var c = document.createElement('canvas'); c.width = w; c.height = h; fn(c.getContext('2d'), w, h); var t = new THREE.CanvasTexture(c); t.anisotropy = 4; t.encoding = THREE.sRGBEncoding; return t; }
   function ia(o, k) { o.userData.k = k; IA.push(o); return o; }
   function tone(f, d, ty, v) { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); var o = AC.createOscillator(), g = AC.createGain(); o.type = ty || 'triangle'; o.frequency.value = f; g.gain.setValueAtTime(v || .12, AC.currentTime); g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + d); o.connect(g); g.connect(AC.destination); o.start(); o.stop(AC.currentTime + d); } catch (e) {} }
@@ -35,15 +42,15 @@
     ['#e95420', '#777', '#555'].forEach(function (c, k) { g.fillStyle = c; g.beginPath(); g.arc(90 + k * 20, 80, 6, 0, 7); g.fill(); });
     g.fillStyle = '#ddd'; g.fillText('fuyad@ubuntu: ~', W / 2 - 60, 86);
     [].forEach.call($('tt').childNodes, function (n) { var col = n.style.color || COL[n.className] || '#eeeeec'; n.textContent.split('\n').forEach(function (p, k) { if (k) lines.push([]); if (p) lines[lines.length - 1].push([p, col]); }); });
-    g.font = '20px "Ubuntu Mono",monospace'; var mx = 21, y0 = 124, s = Math.max(0, lines.length - mx), cw = 0;
-    for (i = s; i < lines.length; i++) { var x = 90; cw = 0; lines[i].forEach(function (p) { g.fillStyle = p[1]; g.fillText(p[0], x, y0 + (i - s) * 22); var w = g.measureText(p[0]).width; x += w; cw += w; }); }
-    if (((t / 500) | 0) % 2) { g.fillStyle = '#eee'; g.fillRect(90 + cw, y0 + (Math.min(lines.length, mx) - 1) * 22 - 16, 11, 20); }
+    var fs = portrait ? 27 : 20, lh = portrait ? 31 : 22; g.font = fs + 'px "Ubuntu Mono",monospace'; var mx = portrait ? 15 : 21, y0 = 124, s = Math.max(0, lines.length - mx), cw = 0;
+    for (i = s; i < lines.length; i++) { var x = 90; cw = 0; lines[i].forEach(function (p) { g.fillStyle = p[1]; g.fillText(p[0], x, y0 + (i - s) * lh); var w = g.measureText(p[0]).width; x += w; cw += w; }); }
+    if (((t / 500) | 0) % 2) { g.fillStyle = '#eee'; g.fillRect(90 + cw, y0 + (Math.min(lines.length, mx) - 1) * lh - fs * .8, fs * .55, fs); }
     st.needsUpdate = true;
   }
 
   function build() {
     R = new THREE.WebGLRenderer({ canvas: $('room'), antialias: true }); R.setPixelRatio(Math.min(devicePixelRatio, 2));
-    R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = .95 + .25 * DK; R.outputEncoding = THREE.sRGBEncoding;
+    R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = .95 - .12 * DK; R.outputEncoding = THREE.sRGBEncoding;
     S = new THREE.Scene(); var bgc = mixc(0x070a14, 0x9cc4ec, DK); S.background = bgc; S.fog = new THREE.Fog(bgc, 6, 16);
     C = new THREE.PerspectiveCamera(40, 1, .05, 40);
     amb = new THREE.AmbientLight(mixc(0x2a3a6a, 0x9ab4d8, DK), .9); S.add(amb);
@@ -107,28 +114,28 @@
     var ms2 = new THREE.Mesh(new THREE.SphereGeometry(1, 16, 12), mat(0x2a2a30, .3, .6)); ms2.scale.set(.04, .022, .066); ms2.position.set(.78, .82, .22); ms2.castShadow = true; S.add(ms2);
     dcx = document.createElement('canvas'); dcx.width = dcx.height = 256; dct = new THREE.CanvasTexture(dcx); dct.encoding = THREE.sRGBEncoding;
     var dcb = new THREE.Mesh(new THREE.CylinderGeometry(.1, .1, .045, 32), mat(0xe95420, .4)); dcb.rotation.x = Math.PI / 2; dcb.position.set(1.22, .9, -.32); dcb.castShadow = true; S.add(dcb); ia(dcb, 'clock'); var dcf = new THREE.Mesh(new THREE.CircleGeometry(.088, 32), new THREE.MeshBasicMaterial({ map: dct })); dcf.position.set(1.22, .9, -.2965); S.add(dcf); ia(dcf, 'clock'); bx(.14, .02, .08, mat(0xe95420, .4), 1.22, .81, -.32);
-    function size() { R.setSize(innerWidth, innerHeight, false); C.aspect = innerWidth / innerHeight; C.updateProjectionMatrix(); } addEventListener('resize', size); size();
+    function size() { R.setSize(innerWidth, innerHeight, false); ASP = innerWidth / innerHeight; portrait = ASP < .9; C.aspect = ASP; C.updateProjectionMatrix(); curves(); } addEventListener('resize', size); size();
   }
 
   var LB = { lamp: 'LAMP  [L]', mug: 'COFFEE', alien: 'ALIEN PLUSH', plant: 'PLANT', book: 'BOOKS', key: 'MINI SYNTH  [A-K]', mac: 'MACBOOK: SIT DOWN', monitor: 'SECOND MONITOR  (ON/OFF)', phone: 'PHONE', phones: 'HEADPHONES', clock: 'DESK CLOCK  (REAL TIME)' };
   function pick(e) { mv.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1); RC.setFromCamera(mv, C); var h = RC.intersectObjects(IA, false); return h.length ? h[0].object : null; }
-  function play(k) { tone(k.userData.f, .6, 'triangle', .14); k.userData.p = .16; }
+  function play(k) { Q.sfx.note(k.userData.f); k.userData.p = .16; }
   function act(o) {
     var k = o.userData.k;
-    if (k === 'lamp') { lampOn = !lampOn; tone(lampOn ? 1100 : 700, .06, 'square', .06); }
-    else if (k === 'mug') { sipT = 1.3; tone(180, .35, 'sine', .08); }
-    else if (k === 'alien') { hopT = .6; tone(880, .08, 'square', .05); setTimeout(function () { tone(1320, .1, 'square', .05); }, 90); }
+    if (k === 'lamp') { lampOn = !lampOn; Q.sfx.lamp(lampOn); }
+    else if (k === 'mug') { sipT = 1.3; Q.sfx.sip(); }
+    else if (k === 'alien') { hopT = .6; Q.sfx.alien(); }
     else if (k === 'plant') swayT = 1.6;
-    else if (k === 'book') { bookOut = !bookOut; tone(240, .08, 'sine', .08); }
+    else if (k === 'book') { bookOut = !bookOut; Q.sfx.book(); }
     else if (k === 'key') play(o);
-    else if (k === 'monitor') { m2On = !m2On; m2Last = 0; tone(m2On ? 1000 : 600, .08, 'square', .05); }
-    else if (k === 'phone') { phoneT = .6; tone(1568, .3, 'sine', .12); setTimeout(function () { tone(2093, .3, 'sine', .1); }, 130); }
-    else if (k === 'phones') { [392, 494, 587].forEach(function (f, i) { setTimeout(function () { tone(f, .5, 'triangle', .1); }, i * 90); }); }
+    else if (k === 'monitor') { m2On = !m2On; m2Last = 0; Q.sfx.lamp(m2On); }
+    else if (k === 'phone') { phoneT = .6; Q.sfx.phone(); }
+    else if (k === 'phones') Q.sfx.chord();
     else if (k === 'mac' && Q.room.onSit) Q.room.onSit();
   }
   function anim(t, dt) {
     lampK += ((lampOn ? 1 : 0) - lampK) * Math.min(1, dt * 9);
-    lampL.intensity = 2.2 * lampK; lampP.intensity = .5 * lampK; amb.intensity = (.22 + .68 * lampK) * (1 - DK) + 1.0 * DK; amb.userData.r.intensity = (.25 + .3 * lampK) * (1 - DK) + .9 * DK; bulb.material.color.setRGB(.18 + .82 * lampK, .15 + .74 * lampK, .12 + .56 * lampK);
+    lampL.intensity = 2.2 * lampK; lampP.intensity = .5 * lampK; amb.intensity = (.22 + .68 * lampK) * (1 - DK) + .62 * DK; amb.userData.r.intensity = (.25 + .3 * lampK) * (1 - DK) + .55 * DK; bulb.material.color.setRGB(.18 + .82 * lampK, .15 + .74 * lampK, .12 + .56 * lampK);
     if (sipT > 0) { sipT -= dt; mug.rotation.x = -.5 * Math.sin(Math.PI * Math.max(0, 1 - sipT / 1.3)); } else mug.rotation.x = 0;
     steam.forEach(function (p, i) { var ph = (t / 1700 + i / 8) % 1; p.position.set(1.05 + Math.sin(ph * 6 + i) * .018, .93 + ph * .2, .28); p.scale.setScalar(1 + ph * 2.2); p.material.opacity = (1 - ph) * (.14 + (sipT > 0 ? .25 : 0)); });
     if (hopT > 0) { hopT -= dt; alien.position.y = .8 + .12 * Math.sin(Math.PI * Math.max(0, 1 - hopT / .6)); } else alien.position.y = .8;
@@ -158,7 +165,7 @@
     var d = tp - prog; if (Math.abs(d) > 1e-4) prog += Math.sign(d) * Math.min(Math.abs(d), dt * rate);
     var e = prog * prog * (3 - 2 * prog); PC.getPoint(e, C.position); LC.getPoint(e, C.userData.l = C.userData.l || new THREE.Vector3());
     if (mode === 'idle') { C.position.x += mxp * .5; C.position.y -= myp * .22; }
-    C.lookAt(C.userData.l); C.fov = 40 + 8 * e; C.updateProjectionMatrix();
+    C.lookAt(C.userData.l); C.fov = (portrait ? 58 : 40) + 8 * e; C.updateProjectionMatrix();
     ufo.position.x = -.8 + Math.sin(t / 3400) * 1.6; ufo.position.y = 2.9 + Math.sin(t / 800) * .06; ufo.rotation.z = Math.sin(t / 1600) * .15; alien.rotation.z = Math.sin(t / 500) * .06;
     anim(t, dt); drawScreen(t); R.render(S, C);
     if (zcb && prog >= .999) { var z = zcb; zcb = null; z(); }
@@ -180,6 +187,7 @@
     arrive: function (cb) { doneT = true; after = function () { setTimeout(function () { $('room').classList.add('off'); cb(); }, 450); }; },
     out: function () { mode = 'out'; $('room').classList.remove('off'); rate = 1 / 3; tp = .3; after = function () { mode = 'idle'; hint('CLICK THINGS ON THE DESK  -  CLICK THE MACBOOK OR PRESS ENTER TO SIT DOWN'); }; },
     back: function (cb) { mode = 'in'; lastKey = ''; hint(''); rate = 1 / 3; tp = 1; doneT = true; after = function () { $('room').classList.add('off'); cb(); }; },
+    seek: function (p) { prog = tp = p; },
     mode: function () { return mode; }
   };
 })();

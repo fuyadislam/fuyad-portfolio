@@ -56,3 +56,16 @@
 /* room tooltip */
 #rt{position:fixed;z-index:80;pointer-events:none;background:rgba(10,8,20,.88);color:#ffe9c8;font:12px "Ubuntu Mono",monospace;letter-spacing:.1em;padding:5px 11px;border-radius:99px;border:1px solid rgba(255,200,140,.35);box-shadow:0 6px 20px rgba(0,0,0,.5)}
 #rh{font-size:13px;padding:0 12px}
+
+/* phones held sideways: controls float at the sides so nothing is cut off */
+@media (max-height:520px) and (orientation:landscape) and (pointer:coarse){
+  :root{--sw:min(calc(100vw - 330px),calc((100vh - 96px) * 1.6667))}
+  #desk{padding-top:30px}
+  .ctrl{position:fixed;left:0;right:0;bottom:0;height:150px;margin:0;padding:0;background:none;pointer-events:none;z-index:6}
+  .ctrl>*{pointer-events:auto}
+  .dp{position:absolute;left:70px;bottom:12px}
+  .ab{position:absolute;right:16px;bottom:12px}
+  .mid2{position:absolute;left:50%;bottom:6px;transform:translateX(-50%)}
+  #rh{bottom:3vh;font-size:11px}
+}
+@media (pointer:coarse){.con{transform:none!important;transition:none}}
